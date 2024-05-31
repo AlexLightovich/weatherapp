@@ -11,7 +11,7 @@ class WeekForecastWeather extends StatefulWidget {
 
 }
 
-Container _createHourCard(String degrees, String icon, String time) {
+Container _createWeekCard(String degrees, String icon, String time) {
   return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -56,8 +56,8 @@ class _WeekForecastWeather extends State<WeekForecastWeather> {
         separatorBuilder: (context, index) => Divider(),
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return _createHourCard(
-              "${_weatherInfo.forecastInfo.forecastDay[index].hour[index].temperature.toStringAsFixed(0)} °C",
+          return _createWeekCard(
+              "${_weatherInfo.forecastInfo.forecastDay[index].day.avgTemp.toStringAsFixed(0)} °C",
               _weatherInfo.forecastInfo.forecastDay[index].day.condition.icon,
               DateFormat("EEE", "ru").format(DateFormat("yyyy-MM-dd HH:mm").parse(_weatherInfo.forecastInfo.forecastDay[index].hour[0].time)));
         }
